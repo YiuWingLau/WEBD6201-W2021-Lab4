@@ -134,6 +134,7 @@ namespace core
           {
             if(!namePattern.test($(this).val().toString()))
             {
+              $("#messageArea").hide();
               $("#hintText").hide();
               errorMessage
                 .show()
@@ -163,6 +164,7 @@ namespace core
             let validation = namePattern.test($(this).val().toString());
             if (!validation) 
             {
+              $("#messageArea").hide();
               $("#hintText").hide();
               errorMessage
                 .show()
@@ -192,6 +194,7 @@ namespace core
             let validation = emailPattern.test($(this).val().toString());
             if (!validation) 
             {
+              $("#messageArea").hide();
               $("#hintText").hide();
               errorMessage
                 .show()
@@ -221,6 +224,7 @@ namespace core
              let validation = namePattern.test($(this).val().toString());
              if (!validation) 
              {
+              $("#messageArea").hide();
                $("#hintText").hide();
                errorMessage
                  .show()
@@ -251,6 +255,7 @@ namespace core
             let validation = passwordPattern.test($(this).val().toString());
             if (!validation || $(this).val() == "")
             {
+              $("#messageArea").hide();
               $("#hintText").hide();
               errorMessage
                 .show()
@@ -282,6 +287,7 @@ namespace core
             let validation = passwordPattern.test($(this).val().toString());
             if (!validation || $(this).val() == "")
             {
+              $("#messageArea").hide();
               $("#hintText").hide();
               errorMessage
                 .show()
@@ -294,6 +300,7 @@ namespace core
               // check whether password matches with confirmed password
               if($("#password").val() !== $(this).val()) 
               {
+                $("#messageArea").hide();
                 $("#hintText").hide();
                 errorMessage
                 .show()

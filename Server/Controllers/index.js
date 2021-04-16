@@ -83,7 +83,7 @@ function ProcessRegisterPage(req, res, next) {
         if (err) {
             console.error('Error: Inserting New User');
             if (err.name == "UserExistsError") {
-                req.flash('registerMessage', 'Registration Error');
+                req.flash('registerMessage', 'Error: User Already Exists');
                 console.error('Error: User Already Exists');
             }
             return res.redirect('/register');
