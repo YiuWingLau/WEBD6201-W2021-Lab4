@@ -119,9 +119,213 @@ namespace core
       
     }
 
+    /***************************************************     displayRegister       ***************************************** */
+    
+        /**
+         * check the validation of first name in register form
+         * by comparing the input string with name pattern
+         */
+        function CheckFirstName()
+        {
+          let errorMessage = $("#errorMessage");
+          let namePattern = /^[A-Z][a-z]+$/;
+        
+          $("#firstName").on("blur", function()
+          {
+            if(!namePattern.test($(this).val().toString()))
+            {
+              $("#hintText").hide();
+              errorMessage
+                .show()
+                .addClass("alert alert-danger")
+                .text("Please enter a valid Name. First name should have at least 2 characters and start with a uppercase letter.");
+              $(this).trigger("focus").trigger("select");
+            }
+            else
+            {
+              errorMessage.removeAttr("class").hide();
+              $("#hintText").show();
+            }
+          });
+        }
+    
+        /**
+         * check the validation of last name in register form
+         * by comparing the input string with name pattern
+         */
+        function CheckLastName()
+        {
+          let errorMessage = $("#errorMessage").hide();
+          let namePattern = /^[A-Z][a-z]+$/;
+    
+          $("#lastName").on("blur", function () 
+          {
+            let validation = namePattern.test($(this).val().toString());
+            if (!validation) 
+            {
+              $("#hintText").hide();
+              errorMessage
+                .show()
+                .addClass("alert alert-danger")
+                .text("Please enter a valid Name. Last name should have at least 2 characters and start with a uppercase letter.");
+              $(this).trigger("focus").trigger("select");
+            } 
+            else 
+            {
+              errorMessage.removeAttr("class").hide();
+              $("#hintText").show();
+            }
+          });
+        }
+    
+        /**
+         * check the validation of email address in register form
+         * by comparing the input string with email pattern
+         */
+        function CheckEmail()
+        {
+          let errorMessage = $("#errorMessage").hide();
+          let emailPattern = /^([a-zA-Z0-9._%-]{8,}@[a-zA-Z0-9-]{4,}\.[a-zA-Z]{2,6})*$/;
+    
+          $("#emailAddress").on("blur", function () 
+          {
+            let validation = emailPattern.test($(this).val().toString());
+            if (!validation) 
+            {
+              $("#hintText").hide();
+              errorMessage
+                .show()
+                .addClass("alert alert-danger")
+                .text("Please enter a valid Email Address.");
+              $(this).trigger("focus").trigger("select");
+            } 
+            else 
+            {
+              errorMessage.removeAttr("class").hide();
+              $("#hintText").show();
+            }
+          });
+        }
+
+        /**
+         * check the validation of user name in register form
+         * by comparing the input string with name pattern
+         */
+         function CheckUsername()
+         {
+           let errorMessage = $("#errorMessage").hide();
+           let namePattern = /^([a-zA-Z][a-zA-Z0-9]{4,})+$/;
+     
+           $("#username").on("blur", function () 
+           {
+             let validation = namePattern.test($(this).val().toString());
+             if (!validation) 
+             {
+               $("#hintText").hide();
+               errorMessage
+                 .show()
+                 .addClass("alert alert-danger")
+                 .text("Please enter a valid Name. User name should have at least 5 letters or number which starting with letter.");
+               $(this).trigger("focus").trigger("select");
+             } 
+             else 
+             {
+               errorMessage.removeAttr("class").hide();
+               $("#hintText").show();
+             }
+           });
+         }
+         
+        /**
+         * check the validation of password in register form
+         * by comparing the input string with password pattern
+         */
+        function CheckPassword()
+        {
+          let errorMessage = $("#errorMessage").hide();
+          let passwordPattern = /^([a-zA-Z0-9._%-]{6,})*$/;
+    
+          // check the length and pattern of password
+          $("#password").on("blur", function () 
+          {
+            let validation = passwordPattern.test($(this).val().toString());
+            if (!validation || $(this).val() == "")
+            {
+              $("#hintText").hide();
+              errorMessage
+                .show()
+                .addClass("alert alert-danger")
+                .text("Please enter a valid password. It should have at least 6 characters.");
+              $(this).trigger("focus").trigger("select");
+            } 
+            else 
+            {
+              errorMessage.removeAttr("class").hide();
+              $("#hintText").show();
+            }
+          });
+        }
+    
+        /**
+         * check the validation of password in register form                                                     Lab 2 : 2(e)
+         * by comparing the input string with confirm password pattern
+         * check whether both password and confirm password are the same
+         */
+        function CheckConfirmPassword()
+        {
+          let errorMessage = $("#errorMessage").hide();
+          let passwordPattern = /^([a-zA-Z0-9._%-]{6,})*$/;
+    
+          // check the length and pattern of confirm password
+          $("#confirmPassword").on("blur", function () 
+          {
+            let validation = passwordPattern.test($(this).val().toString());
+            if (!validation || $(this).val() == "")
+            {
+              $("#hintText").hide();
+              errorMessage
+                .show()
+                .addClass("alert alert-danger")
+                .text("Please enter a confirm password. It should have at least 6 characters.");
+              $(this).trigger("focus").trigger("select");
+            }
+            else
+            { 
+              // check whether password matches with confirmed password
+              if($("#password").val() !== $(this).val()) 
+              {
+                $("#hintText").hide();
+                errorMessage
+                .show()
+                .addClass("alert alert-danger")
+                .text("Password didn't match. Please enter again.");
+                $(this).val('');
+                $("#password").val('');
+                $("#password").trigger("focus").trigger("select");
+              }
+              else
+              {
+                errorMessage.removeAttr("class").hide();
+                $("#hintText").show();
+              }
+            }
+          });
+        }
+    
+        function RegisterValidation()
+        {
+          CheckFirstName();
+          CheckLastName();
+          CheckEmail();
+          CheckUsername();
+          CheckPassword();
+          CheckConfirmPassword();
+        }
+    
     function displayRegister():void
     {
       // any validation will be done here
+      RegisterValidation();
     }
 
      /**

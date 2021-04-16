@@ -75,7 +75,141 @@ var core;
     }
     function displayLogin() {
     }
+    function CheckFirstName() {
+        let errorMessage = $("#errorMessage");
+        let namePattern = /^[A-Z][a-z]+$/;
+        $("#firstName").on("blur", function () {
+            if (!namePattern.test($(this).val().toString())) {
+                $("#hintText").hide();
+                errorMessage
+                    .show()
+                    .addClass("alert alert-danger")
+                    .text("Please enter a valid Name. First name should have at least 2 characters and start with a uppercase letter.");
+                $(this).trigger("focus").trigger("select");
+            }
+            else {
+                errorMessage.removeAttr("class").hide();
+                $("#hintText").show();
+            }
+        });
+    }
+    function CheckLastName() {
+        let errorMessage = $("#errorMessage").hide();
+        let namePattern = /^[A-Z][a-z]+$/;
+        $("#lastName").on("blur", function () {
+            let validation = namePattern.test($(this).val().toString());
+            if (!validation) {
+                $("#hintText").hide();
+                errorMessage
+                    .show()
+                    .addClass("alert alert-danger")
+                    .text("Please enter a valid Name. Last name should have at least 2 characters and start with a uppercase letter.");
+                $(this).trigger("focus").trigger("select");
+            }
+            else {
+                errorMessage.removeAttr("class").hide();
+                $("#hintText").show();
+            }
+        });
+    }
+    function CheckEmail() {
+        let errorMessage = $("#errorMessage").hide();
+        let emailPattern = /^([a-zA-Z0-9._%-]{8,}@[a-zA-Z0-9-]{4,}\.[a-zA-Z]{2,6})*$/;
+        $("#emailAddress").on("blur", function () {
+            let validation = emailPattern.test($(this).val().toString());
+            if (!validation) {
+                $("#hintText").hide();
+                errorMessage
+                    .show()
+                    .addClass("alert alert-danger")
+                    .text("Please enter a valid Email Address.");
+                $(this).trigger("focus").trigger("select");
+            }
+            else {
+                errorMessage.removeAttr("class").hide();
+                $("#hintText").show();
+            }
+        });
+    }
+    function CheckUsername() {
+        let errorMessage = $("#errorMessage").hide();
+        let namePattern = /^([a-zA-Z][a-zA-Z0-9]{4,})+$/;
+        $("#username").on("blur", function () {
+            let validation = namePattern.test($(this).val().toString());
+            if (!validation) {
+                $("#hintText").hide();
+                errorMessage
+                    .show()
+                    .addClass("alert alert-danger")
+                    .text("Please enter a valid Name. User name should have at least 5 letters or number which starting with letter.");
+                $(this).trigger("focus").trigger("select");
+            }
+            else {
+                errorMessage.removeAttr("class").hide();
+                $("#hintText").show();
+            }
+        });
+    }
+    function CheckPassword() {
+        let errorMessage = $("#errorMessage").hide();
+        let passwordPattern = /^([a-zA-Z0-9._%-]{6,})*$/;
+        $("#password").on("blur", function () {
+            let validation = passwordPattern.test($(this).val().toString());
+            if (!validation || $(this).val() == "") {
+                $("#hintText").hide();
+                errorMessage
+                    .show()
+                    .addClass("alert alert-danger")
+                    .text("Please enter a valid password. It should have at least 6 characters.");
+                $(this).trigger("focus").trigger("select");
+            }
+            else {
+                errorMessage.removeAttr("class").hide();
+                $("#hintText").show();
+            }
+        });
+    }
+    function CheckConfirmPassword() {
+        let errorMessage = $("#errorMessage").hide();
+        let passwordPattern = /^([a-zA-Z0-9._%-]{6,})*$/;
+        $("#confirmPassword").on("blur", function () {
+            let validation = passwordPattern.test($(this).val().toString());
+            if (!validation || $(this).val() == "") {
+                $("#hintText").hide();
+                errorMessage
+                    .show()
+                    .addClass("alert alert-danger")
+                    .text("Please enter a confirm password. It should have at least 6 characters.");
+                $(this).trigger("focus").trigger("select");
+            }
+            else {
+                if ($("#password").val() !== $(this).val()) {
+                    $("#hintText").hide();
+                    errorMessage
+                        .show()
+                        .addClass("alert alert-danger")
+                        .text("Password didn't match. Please enter again.");
+                    $(this).val('');
+                    $("#password").val('');
+                    $("#password").trigger("focus").trigger("select");
+                }
+                else {
+                    errorMessage.removeAttr("class").hide();
+                    $("#hintText").show();
+                }
+            }
+        });
+    }
+    function RegisterValidation() {
+        CheckFirstName();
+        CheckLastName();
+        CheckEmail();
+        CheckUsername();
+        CheckPassword();
+        CheckConfirmPassword();
+    }
     function displayRegister() {
+        RegisterValidation();
     }
     function Start() {
         let pageID = $("body")[0].getAttribute("id");
