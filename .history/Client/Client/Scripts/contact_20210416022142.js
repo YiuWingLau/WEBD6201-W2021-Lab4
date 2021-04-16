@@ -1,9 +1,3 @@
-/*
-File name: contact.js
-Name: Yiu Wing Lau
-Student ID: 100704716
-Date Completed: 16/04/2021
-*/
 "use strict";
 var core;
 (function (core) {

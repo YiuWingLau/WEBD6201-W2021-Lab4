@@ -1,9 +1,3 @@
-/*
-File name: index.js
-Name: Yiu Wing Lau
-Student ID: 100704716
-Date Completed: 16/04/2021
-*/
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };

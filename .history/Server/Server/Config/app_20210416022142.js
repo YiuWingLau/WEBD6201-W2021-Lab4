@@ -1,9 +1,3 @@
-/*
-File name: app.js
-Name: Yiu Wing Lau
-Student ID: 100704716
-Date Completed: 16/04/2021
-*/
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;

@@ -1,9 +1,3 @@
-/*
-File name: app.js
-Name: Yiu Wing Lau
-Student ID: 100704716
-Date Completed: 16/04/2021
-*/
 "use strict";
 var core;
 (function (core) {
@@ -86,6 +80,7 @@ var core;
         let namePattern = /^[A-Z][a-z]+$/;
         $("#firstName").on("blur", function () {
             if (!namePattern.test($(this).val().toString())) {
+                $("#messageArea").hide();
                 $("#hintText").hide();
                 errorMessage
                     .show()
@@ -105,6 +100,7 @@ var core;
         $("#lastName").on("blur", function () {
             let validation = namePattern.test($(this).val().toString());
             if (!validation) {
+                $("#messageArea").hide();
                 $("#hintText").hide();
                 errorMessage
                     .show()
@@ -124,6 +120,7 @@ var core;
         $("#emailAddress").on("blur", function () {
             let validation = emailPattern.test($(this).val().toString());
             if (!validation) {
+                $("#messageArea").hide();
                 $("#hintText").hide();
                 errorMessage
                     .show()
@@ -143,6 +140,7 @@ var core;
         $("#username").on("blur", function () {
             let validation = namePattern.test($(this).val().toString());
             if (!validation) {
+                $("#messageArea").hide();
                 $("#hintText").hide();
                 errorMessage
                     .show()
@@ -162,6 +160,7 @@ var core;
         $("#password").on("blur", function () {
             let validation = passwordPattern.test($(this).val().toString());
             if (!validation || $(this).val() == "") {
+                $("#messageArea").hide();
                 $("#hintText").hide();
                 errorMessage
                     .show()
@@ -181,6 +180,7 @@ var core;
         $("#confirmPassword").on("blur", function () {
             let validation = passwordPattern.test($(this).val().toString());
             if (!validation || $(this).val() == "") {
+                $("#messageArea").hide();
                 $("#hintText").hide();
                 errorMessage
                     .show()
@@ -190,6 +190,7 @@ var core;
             }
             else {
                 if ($("#password").val() !== $(this).val()) {
+                    $("#messageArea").hide();
                     $("#hintText").hide();
                     errorMessage
                         .show()

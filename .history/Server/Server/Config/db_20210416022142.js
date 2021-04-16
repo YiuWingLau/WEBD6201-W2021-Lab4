@@ -1,9 +1,3 @@
-/*
-File name: db.js
-Name: Yiu Wing Lau
-Student ID: 100704716
-Date Completed: 16/04/2021
-*/
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConnectionType = exports.RemoteURI = exports.Secret = exports.localURI = void 0;
